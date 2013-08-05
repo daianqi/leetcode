@@ -66,7 +66,6 @@ public class leetcode_2  {
         } else {
             array1 = getRight(array1);
             array2 = getLeft(array2);
-
             return findMedium(array1,array2);
         }
     }
