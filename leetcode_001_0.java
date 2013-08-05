@@ -9,6 +9,7 @@ Output: index1=1, index2=2
 */
 
 import java.lang.System;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class Solution {
@@ -23,11 +24,7 @@ public class Solution {
                 int[] result = new int[2];
                 result[0] = table.get(numbers[i]);
                 result[1] = i+1;
-                if(result[0]>result[1]) {
-                    int tmp = result[0];
-                    result[0] = result[1];
-                    result[1] = tmp;
-                }
+                Arrays.sort(result);
                 return result;
             }
         }

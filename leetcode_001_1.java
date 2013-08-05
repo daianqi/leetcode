@@ -10,7 +10,6 @@ Output: index1=1, index2=2
 
 /*
 sort first and then use two index at the beginning and the end
-not so good if you want the original index back
 */
 
 import java.lang.System;
@@ -18,41 +17,41 @@ import java.util.Arrays;
 import java.util.Hashtable;
 
 public class Solution {
-    public int findIndex(int[] array, int value) {
-        for(int i = 0;i<array.length;i++) {
-            if(array[i] == value)
-                return i+1;
-        }
-        return -1;
-    }
-
     public int[] twoSum(int[] numbers, int target) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        int[] backup = new int[numbers.length];
-        for(int i = 0;i<backup.length;i++)
-            backup[i] = numbers[i];
-        Arrays.sort(numbers);
+        if(numbers == null || numbers.length == 0)
+            return new int[2];
+
+        int [] nums = numbers.clone(); //learn
+        Arrays.sort(numbers); //learn
+
         int i = 0;
         int j = numbers.length-1;
-        while(i<j) {
-            if((numbers[i]+numbers[j]) == target) {
-                int[] result = new int[2];
-                result[0] = findIndex(backup,numbers[i]);
-                result[1] = findIndex(backup,numbers[j]);
-                if(result[0]>result[1]) {
-                    int temp = result[0];
-                    result[0] = result[1];
-                    result[1] = temp;
-                }
-                return result;
+
+        while(i < j){
+            if(numbers[i]+numbers[j] == target){
+                break;
             }
-            if(numbers[i]+numbers[j]>target)
-                j--;
-            else
+            else if(numbers[i]+numbers[j] < target){
                 i++;
+            }
+            else {
+                j--;
+            }
         }
-        return null;
+
+        int [] results = {-1,-1};
+        for(int k = 0;k < nums.length;k++){
+            if(numbers[i] == nums[k] && results[0] == -1){
+                results[0] = k+1;
+            }
+            else if(numbers[j] == nums[k]&& results[1] == -1){   //no same index for same value
+                results[1] = k+1;
+            }
+        }
+        Arrays.sort(results);  //save
+        return results;
     }
 }
 
