@@ -64,7 +64,6 @@ public class leetcode_002  {
         int j = 0;
         for(int i = 0;i<length;i++)               //same
             newArray[j++] = array[i];
-//        System.out.println("left "+ newArray.length);
         return newArray;
     }
 
@@ -76,29 +75,27 @@ public class leetcode_002  {
             length = array.length/2;
         }
 
-        int[] newArray = new int[length];       //diff
+        int[] newArray = new int[length];                  //diff
         int j = 0;
         for(int i = array.length/2;i<array.length;i++)     //diff
             newArray[j++] = array[i];
-//        System.out.println("right "+newArray.length);
         return newArray;
     }
 
     public static double findMedium(int[] array1, int[] array2) {
         if(array1.length < array2.length) {
             array1 = pad(array1, array2.length);
-            System.out.println("after pad array1 "+array1.length);
         }
         if(array1.length > array2.length) {
             array2 = pad(array2,array1.length);
-//            System.out.println("after pad array2 "+array2.length);
         }
         if(array1.length == 1 && array2.length ==1) {
             return ((double)array1[0]+(double)array2[0])/2;
         }
         if(array1.length == 2 && array2.length ==2) {
-//            System.out.println("max: "+Math.max((double)array1[0],(double)array2[0]) +"| min: "+Math.min((double)array1[1],(double)array2[1]));
             return (Math.max((double)array1[0],(double)array2[0])+Math.min((double)array1[1],(double)array2[1]))/2;
+            //if diff between array1 and array2 is odd, get the minimum between the two, not sum divide by 2.
+            //not finished, a little bit tedious
         }
         int medium1 = array1[array1.length/2];
         int medium2 = array2[array2.length/2];
@@ -118,8 +115,10 @@ public class leetcode_002  {
         }
     }
     public static void main(String[] args) {
-        int[] array1 = {0,1,40,50};
+        int[] array1 = {1, 4, 6, 10, 18};
         int[] array2 = {1, 7, 13, 45, 58, 69, 100, 180, 300};
+//        int[] array1 = {1, 12, 15, 26, 38};
+//        int[] array2 = {2, 13, 17, 30, 45};
         System.out.println(findMedium(array1,array2));
     }
 }
