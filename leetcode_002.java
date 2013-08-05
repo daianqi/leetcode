@@ -11,10 +11,47 @@ the same size.  Repeat until you have two elements left. This is your median.  E
 numbers, so it should have a runtime of O(logn).
 */
 
+/*
+If you want a simpler reduction to equal sized lists, pad the shorter list with an equal number of positive and negative
+infinities. If you need an odd number of pads (ie: when the source lists have an odd total), do it with positive infinity
+and (since the set size was odd) return the lesser of the two retuned values.
+*/
+
+import java.lang.Integer;
 import java.lang.Math;
 import java.lang.System;
 
 public class leetcode_002  {
+    public static int[] pad(int[] array, int size) {
+        int diff = size - array.length;
+        int[] newArray = new int[size];
+        if(diff%2 == 0) {
+            int length = 0;
+            for(int i = 0;i<diff/2;i++) {
+                newArray[length++] = Integer.MIN_VALUE;
+            }
+            for(int i = 0;i<array.length;i++) {
+                newArray[length++] = array[i];
+            }
+            for(int i = 0 ;i<diff/2;i++) {
+                newArray[length++] = Integer.MAX_VALUE;
+            }
+        } else {
+            int length = 0;
+            for(int i = 0;i<diff/2;i++) {
+                newArray[length++] = Integer.MIN_VALUE;
+            }
+            for(int i = 0;i<array.length;i++) {
+                newArray[length++] = array[i];
+            }
+            for(int i = 0 ;i<diff/2+1;i++) {
+                newArray[length++] = Integer.MAX_VALUE;
+            }
+        }
+
+        return newArray;
+    }
+
     public static int[] getLeft(int[] array) {
         int length = 0;
         if(array.length%2 != 0) {
@@ -27,7 +64,7 @@ public class leetcode_002  {
         int j = 0;
         for(int i = 0;i<length;i++)               //same
             newArray[j++] = array[i];
-        System.out.println("left "+ newArray.length);
+//        System.out.println("left "+ newArray.length);
         return newArray;
     }
 
@@ -43,19 +80,29 @@ public class leetcode_002  {
         int j = 0;
         for(int i = array.length/2;i<array.length;i++)     //diff
             newArray[j++] = array[i];
-        System.out.println("right "+newArray.length);
+//        System.out.println("right "+newArray.length);
         return newArray;
     }
 
     public static double findMedium(int[] array1, int[] array2) {
+        if(array1.length < array2.length) {
+            array1 = pad(array1, array2.length);
+            System.out.println("after pad array1 "+array1.length);
+        }
+        if(array1.length > array2.length) {
+            array2 = pad(array2,array1.length);
+//            System.out.println("after pad array2 "+array2.length);
+        }
         if(array1.length == 1 && array2.length ==1) {
             return ((double)array1[0]+(double)array2[0])/2;
         }
         if(array1.length == 2 && array2.length ==2) {
+//            System.out.println("max: "+Math.max((double)array1[0],(double)array2[0]) +"| min: "+Math.min((double)array1[1],(double)array2[1]));
             return (Math.max((double)array1[0],(double)array2[0])+Math.min((double)array1[1],(double)array2[1]))/2;
         }
         int medium1 = array1[array1.length/2];
         int medium2 = array2[array2.length/2];
+        System.out.println("medium1: "+ medium1+"| medium2: "+medium2);
         if(medium1 == medium2) {
             return medium1;
         }
@@ -66,12 +113,13 @@ public class leetcode_002  {
         } else {
             array1 = getRight(array1);
             array2 = getLeft(array2);
+
             return findMedium(array1,array2);
         }
     }
     public static void main(String[] args) {
-        int[] array1 = {0,1,3,4,5};
-        int[] array2 = {1,1,2,2,10};
+        int[] array1 = {0,1,40,50};
+        int[] array2 = {1, 7, 13, 45, 58, 69, 100, 180, 300};
         System.out.println(findMedium(array1,array2));
     }
 }
