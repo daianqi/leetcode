@@ -4,10 +4,11 @@ run time complexity should be O(log (m+n)).
 */
 
 /*
-If both size is n and time complexity requirement is logn. Examine the middle element of each array, and throw out the lower half of the array with the smaller element (since all
-those must be less than ½ the numbers) and throw out the upper half of the array with the larger element (since all those
-must be greater than ½ the numbers).  Now both arrays are still the same size.  Repeat until you have two elements left.
-This is your median.  Each step, you eliminate half of the numbers, so it should have a runtime of O(logn).
+If both size is n and time complexity requirement is logn. Examine the middle element of each array, and throw out the
+lower half of the array with the smaller element (since all those must be less than ½ the numbers) and throw out the upper
+half of the array with the larger element (since all those must be greater than ½ the numbers).  Now both arrays are still
+the same size.  Repeat until you have two elements left. This is your median.  Each step, you eliminate half of the
+numbers, so it should have a runtime of O(logn).
 */
 
 import java.lang.Math;
