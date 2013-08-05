@@ -1,5 +1,6 @@
 /*
 Median of Two Sorted Arrays.
+http://leetcode.com/2011/03/median-of-two-sorted-arrays.html#comment-1053
 There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall
 run time complexity should be O(log (m+n)).
 */
