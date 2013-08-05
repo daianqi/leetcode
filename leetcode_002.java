@@ -14,7 +14,7 @@ numbers, so it should have a runtime of O(logn).
 import java.lang.Math;
 import java.lang.System;
 
-public class leetcode_2  {
+public class leetcode_002  {
     public static int[] getLeft(int[] array) {
         int length = 0;
         if(array.length%2 != 0) {
