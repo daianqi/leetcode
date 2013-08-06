@@ -1,6 +1,5 @@
 /*
-Median of Two Sorted Arrays.
-http://leetcode.com/2011/03/median-of-two-sorted-arrays.html#comment-1053
+Median of Two Sorted Arrays
 There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall
 run time complexity should be O(log (m+n)).
 */
@@ -23,7 +22,7 @@ import java.lang.Integer;
 import java.lang.Math;
 import java.lang.System;
 
-public class leetcode_002  {
+public class leetcode_002_0  {
     public static int[] pad(int[] array, int size) {
         int diff = size - array.length;
         int[] newArray = new int[size];
