@@ -1,5 +1,6 @@
 /*
 Longest Palindromic Substring.
+http://leetcode.com/2011/11/longest-palindromic-substring-part-i.html
 Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and
 there exists one unique longest palindromic substring.
 A palindrome is a string which reads the same in both directions. For example, “aba” is a palindome, “abc” is not.
