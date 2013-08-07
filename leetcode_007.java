@@ -13,10 +13,8 @@ public class Solution {
         if(neg) x*=-1;
         int result =0;
         while(x>0) {
-            result += x%10;
+            result = result*10 + x%10;
             x /= 10;
-            if(x>0)
-                result *= 10;
         }
         return neg?(result*-1):result;
     }
