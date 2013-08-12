@@ -36,10 +36,6 @@ public class leetcode_019 {
         }
         if(fast == null) return head.next;
 
-        if(fast.next == null) {
-            slow.next = slow.next.next;
-            return head;
-        }
         while(fast.next != null) {
             fast = fast.next;
             slow = slow.next;
